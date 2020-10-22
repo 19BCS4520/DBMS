@@ -1,0 +1,11 @@
+create table student(id number,name varchar(20),address varchar(20));
+alter table student add phone number(10);
+alter table student drop column phone;
+alter table student modify id varchar(20);
+alter table student rename column id to stud_id;
+drop table student;
+//Alter: It is used to alter the structure of the database.
+//Add-: It is used to add a column in a table.
+//Modify-: It is used to Modify data type of a column.
+//Rename-: It is used to rename a particular column. 
+//Drop: It is used to delete objects from the database
