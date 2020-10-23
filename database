@@ -1,0 +1,75 @@
+create table<table name>(<column1><data type>(size));
+create table IOT (ROLL_NO number(20),name varchar2(20),BRANCH varchar2(20),DEPARTMENT varchar2(10));
+TO INSERT THE VALUES INTO TABLE IN DBMS
+SYNTAX:
+insert into<table name> values( <column><datatype><size>);
+insert into IOT values(4539,'parikshit','CSE',' IOT');
+insert into IOT values(4523,'nakul','CSE',' IOT');
+insert into IOT values(4679,'avi','CSE',' AI');
+insert into IOT values(5689,'kamli','CSE',' AI');
+TO SELECT THE CONTENTS OF THE TABLE IN DBMS
+select *from IOT;
+TO DELETE IN DBMS
+select distinct ROLL_NO from IOT;
+TO SELECT A PARTICULAR ROW AND VIEW
+select ROLL_NO,name from IOT WHERE name='nakul';
+TO UPDATE THE NAME
+UPDATE IOT set BRANCH='IOT' WHERE ROLL_NO=5689;
+select *from IOT;
+TO MODIFY
+alter table IOT add(Phone_number number(20));
+select  *from IOT;
+RENAME:
+rename IOT  to CSE;
+SELECT *FROM CSE;
+
+
+
+## in the example of joins the primary key and reference key is included so 
+create table Details(D_id varchar2(30) primary key,Name varchar2(20),BLOCK number(5),CITY varchar2(20));
+insert into Details values('1496','raj',14,'PUNJAB');
+insert into Details values('2468','MUKHESH',13,'LUDHIANA');
+insert into Details values('5612','MAHESH',12,'CHANDIGARH');
+insert into Details values('1496','KUMAR',11,'HYDERABAD');
+insert into Details values('4396','KHAN',10,'PUNE');
+Select * from Details;
+select * from Details where Name='raj';
+select D_id,Name,BLOCK from  Details where Name='MUKHESH';
+create table Department(Department number(20) primary key, D_id  varchar2(20) references Details(D_id),SALARY number(20)); 
+insert into Department values(678,'1496',90000);
+insert into Department values(679,'2468',70000);
+insert into Department values(153,'',80000);
+insert into Department values(158,'56782',80000);
+select * from Department;
+update Details set BLOCK=16 where D_id=4396;
+alter table Department add (HOSTEL varchar2(20));
+SELECT  Name,CITY FROM Details INNER JOIN Department ON Details.D_id=Department.D_id;
+SELECT  Name,CITY FROM Details LEFT JOIN Department ON Details.D_id=Department.D_id;
+SELECT  Name,CITY FROM Details RIGHT JOIN Department ON Details.D_id=Department.D_id;
+SELECT Name CITY,BLOCK,SALARY FROM Details,Department;
+
+
+ARITHEMATIC OPERATORS 
+
+create table Dept(D_no number(20),Name varchar2(20),CITY  varchar2(20),AGE number(20),SALARY number(10),BRANCH varchar2(20));
+insert into Dept values(4501,'TONY','PUNJAB',35,45000,'HR');
+insert into Dept values(4301,'YASH','MOHALI',36,35000,'HOD');
+insert into Dept values(4561,'SANTS','HYDERABAD',23,25000,'MANAGER');
+insert into Dept values(4401,'RIA','NEWDELHI',35,5000,'SECRETARY');
+insert into Dept values(4601,'SUNDAR','LUDHIANA',35,89000,'HR');
+insert into Dept values(4781,'SHARATH','HP',35,50000,'SECRETARY');
+insert into Dept values(4531,'RAJESH','RANCHI',38,45000,'PUNE');
+insert into Dept values(4232,'TOM','VILASPUR',30,45990,'HOD');
+select *from Dept;
+select D_no,Name,CITY,SALARY+6000 from Dept;
+select D_no,Name,CITY,SALARY-6000 from Dept;
+select D_no,Name,CITY,SALARY*6 from Dept;
+select D_no,Name,CITY,SALARY+6000 from Dept;a
+select D_no,Name,CITY,SALARY/3 from Dept;
+select avg(salary) "AVERAGE SALARY" from Dept;
+select max(salary) "HIGHEST PAID SALARY" from Dept;a
+select sum(salary) "TOTAL SALARY" from Dept;
+select BRANCH,count(*)"No.of Records" from Dept group by BRANCH;
+select BRANCH,sum(SALARY) from Dept group by BRANCH;
+select BRANCH,sum(SALARY) from Dept group by BRANCH having sum(SALARY)>20000;
+select BRANCH,count(*)"No.of Records" from Dept order by SALARY desc;
